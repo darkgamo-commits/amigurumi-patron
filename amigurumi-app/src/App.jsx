@@ -87,22 +87,43 @@ export default function AmigurumiApp() {
     const { magic, hook } = size;
 
     if (level === "beginner") {
-      return `Eres una profesora de crochet muy paciente y amable. Analiza la imagen y genera un patrón de amigurumi MUY SENCILLO para alguien que nunca ha tejido.
+  return `Actúa como una experta en diseño técnico de amigurumis. Analiza la imagen y genera un patrón JSON EXACTO para principiantes.
 
 Proyecto: Tamaño ${size.label}, gancho ${hook}, anillo mágico base ${magic} puntos.
 
-REGLAS IMPORTANTES para principiantes:
-- Usa palabras simples, NADA de abreviaturas técnicas
-- Escribe cada instrucción de forma muy clara: "Haz 2 puntos en el mismo hueco" en vez de "aum"
-- Incluye explicaciones de por qué se hace cada cosa
-- Máximo 3-4 colores, formas simples y redondeadas
-- Cada vuelta explicada como si fuera la primera vez
-- Incluye consejos de motivación y tips visuales
-- Las partes deben ser pocas y simples (máximo 5 partes)
+REGLAS DE PRECISIÓN:
+- Lógica Matemática: Cada vuelta de aumento debe ser múltiplo de ${magic} (ej: ${magic}, ${magic*2}, ${magic*3}...).
+- Solo usa "punto bajo" (pb). No uses puntos complejos.
+- Evita abreviaturas pero mantén la precisión: "Haz 2 puntos en cada punto de la vuelta anterior".
+- Obligatorio: Cada vuelta debe incluir el campo "total" con la suma matemática exacta de puntos.
+- Estructura: Máximo 5 partes. Formas geométricas simples (esferas o cilindros).
 
-Responde SOLO con JSON (sin backticks):
-{"nombre":"...","descripcion":"...","dificultad":"Principiante","tiempoEstimado":"X-Y horas","nivelMensaje":"¡Tú puedes hacerlo! Este patrón es perfecto para comenzar.","materiales":["..."],"partes":[{"nombre":"...","color":"...","puntoInicial":"Haz un anillo mágico con ${magic} puntos","vueltas":[{"num":1,"instruccion":"Haz ${magic} puntos medios dentro del anillo mágico","total":${magic},"explicacion":"Esto forma la base de tu pieza"}],"notas":"..."}],"ensamblaje":["..."],"consejosFinales":["..."]}`;
-    }
+Responde SOLO con JSON:
+{
+  "nombre": "...",
+  "descripcion": "...",
+  "dificultad": "Principiante",
+  "materiales": ["..."],
+  "partes": [{
+    "nombre": "...",
+    "color": "...",
+    "vueltas": [
+      {
+        "num": 1,
+        "instruccion": "Haz ${magic} puntos bajos en un anillo mágico",
+        "pts": ${magic},
+        "explicacion": "Esta es la base circular."
+      },
+      {
+        "num": 2,
+        "instruccion": "Haz 2 puntos bajos en cada punto anterior",
+        "pts": ${magic*2},
+        "explicacion": "Estamos duplicando los puntos para que crezca."
+      }
+    ]
+  }]
+}`;
+}
 
     if (level === "intermediate") {
       return `Eres experta en amigurumis. Analiza la imagen y genera un patrón de amigurumi de dificultad INTERMEDIA.
