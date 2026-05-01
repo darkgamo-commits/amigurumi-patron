@@ -166,17 +166,43 @@ Responde SOLO con JSON:
 }
 
     // advanced
-    return `Eres diseñadora experta en amigurumis con 10+ años de experiencia. Analiza la imagen y genera un patrón COMPLETO y DETALLADO nivel avanzado.
+    return `Actúa como Maestra Diseñadora de Amigurumis de Alta Costura. Genera un patrón JSON de nivel EXPERTO basado en la imagen.
 
 Proyecto: Tamaño ${size.label}, gancho ${hook}, anillo mágico base ${magic} puntos.
 
-Usa terminología técnica española: pm, aum, dis, ap, prs, v. Trabaja en espiral.
-Incluye TODAS las partes (cabeza, cuerpo, extremidades, orejas, cola, detalles).
-Vueltas completamente detalladas, cambios de color, técnicas avanzadas.
+ESTÁNDARES DE ALTA COMPLEJIDAD:
+- Terminología Profesional: Usa pb, aum, dis, mpa, pa (punto alto), pc (punto cadena), BLO (solo hebra trasera), FLO (solo hebra delantera) y disminuciones invisibles.
+- Arquitectura Avanzada: El patrón debe incluir cambios de color estructurales, modelado de facciones y piezas asimétricas para realismo.
+- Lógica Matemática Estricta: Cada vuelta debe ser comprobada. El campo "pts" debe reflejar el resultado exacto de la operación técnica.
+- Instrucciones de Detalle: Incluye indicaciones de bordado, uso de alambre para articulaciones si aplica, y posicionamiento exacto de ojos y accesorios.
 
-Responde SOLO con JSON (sin backticks):
-{"nombre":"...","descripcion":"...","dificultad":"Avanzado","tiempoEstimado":"X-Y horas","nivelMensaje":"Patrón técnico completo para tejedoras expertas.","materiales":["..."],"partes":[{"nombre":"...","color":"...","puntoInicial":"ap con ${magic} pm","vueltas":[{"num":1,"instruccion":"ap con ${magic} pm","total":${magic},"explicacion":""}],"notas":"..."}],"ensamblaje":["..."],"consejosFinales":["..."]}`;
-  };
+Responde SOLO con JSON:
+{
+  "nombre": "...",
+  "descripcion": "...",
+  "dificultad": "Avanzado",
+  "materiales": ["..."],
+  "partes": [{
+    "nombre": "...",
+    "color": "...",
+    "vueltas": [
+      {
+        "num": 1,
+        "instruccion": "Anillo mágico de ${magic} pb",
+        "pts": ${magic},
+        "explicacion": "Inicio de pieza estructural."
+      },
+      {
+        "num": 2,
+        "instruccion": "(${magic} aum)",
+        "pts": ${magic*2},
+        "explicacion": "Crecimiento base."
+      }
+    ],
+    "notas": "Trabajar con tensión firme para evitar que se vea el relleno."
+  }]
+}`;
+}
 
   const generate = async () => {
     if (!imgB64 || !level) return;
