@@ -126,20 +126,44 @@ Responde SOLO con JSON:
 }
 
     if (level === "intermediate") {
-      return `Eres experta en amigurumis. Analiza la imagen y genera un patrón de amigurumi de dificultad INTERMEDIA.
+  return `Actúa como una Ingeniera de Diseño en Crochet. Genera un patrón JSON de dificultad INTERMEDIA basado en la imagen.
 
 Proyecto: Tamaño ${size.label}, gancho ${hook}, anillo mágico base ${magic} puntos.
 
-REGLAS para nivel intermedio:
-- Usa abreviaturas básicas con su significado entre paréntesis la primera vez: pm (punto medio), aum (aumento), dis (disminución)
-- Instrucciones claras pero concisas
-- Puedes incluir algunas técnicas intermedias como cambio de color o relleno parcial
-- Hasta 6 partes, formas moderadamente detalladas
-- Incluye notas útiles y consejos prácticos
+REGLAS DE PRECISIÓN TÉCNICA:
+- Terminología Estándar: Usa pb (punto bajo), aum (aumento), dis (disminución), y mpa (medio punto alto).
+- Lógica de Crecimiento: Las vueltas deben seguir una progresión lógica (ej: ${magic}, ${magic*2}, ${magic*3}, o secuencias como [2 pb, 1 aum]).
+- Verificación Matemática: El campo "pts" debe ser la suma exacta de los puntos ejecutados en la vuelta.
+- Detalles Intermedios: Incluye cambios de color y piezas con formas específicas (no solo esferas).
+- Instrucciones: "Hacer 2 iguales" para brazos/piernas es obligatorio si aplica.
 
-Responde SOLO con JSON (sin backticks):
-{"nombre":"...","descripcion":"...","dificultad":"Intermedio","tiempoEstimado":"X-Y horas","nivelMensaje":"¡Buen momento para subir de nivel con este patrón!","materiales":["..."],"partes":[{"nombre":"...","color":"...","puntoInicial":"Anillo mágico con ${magic} pm","vueltas":[{"num":1,"instruccion":"${magic} pm en anillo mágico","total":${magic},"explicacion":""}],"notas":"..."}],"ensamblaje":["..."],"consejosFinales":["..."]}`;
-    }
+Responde SOLO con JSON:
+{
+  "nombre": "...",
+  "descripcion": "...",
+  "dificultad": "Intermedio",
+  "materiales": ["..."],
+  "partes": [{
+    "nombre": "...",
+    "color": "...",
+    "vueltas": [
+      {
+        "num": 1,
+        "instruccion": "${magic} pb en anillo mágico",
+        "pts": ${magic},
+        "explicacion": "Base técnica."
+      },
+      {
+        "num": 2,
+        "instruccion": "(${magic} aum)",
+        "pts": ${magic*2},
+        "explicacion": "Aumentos en cada punto."
+      }
+    ],
+    "notas": "Rellenar a medida que se teje."
+  }]
+}`;
+}
 
     // advanced
     return `Eres diseñadora experta en amigurumis con 10+ años de experiencia. Analiza la imagen y genera un patrón COMPLETO y DETALLADO nivel avanzado.
