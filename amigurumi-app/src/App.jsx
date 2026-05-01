@@ -87,122 +87,52 @@ export default function AmigurumiApp() {
     const { magic, hook } = size;
 
     if (level === "beginner") {
-  return `Actúa como una experta en diseño técnico de amigurumis. Analiza la imagen y genera un patrón JSON EXACTO para principiantes.
+      return `Eres una profesora de crochet muy paciente y amable. Analiza la imagen y genera un patrón de amigurumi MUY SENCILLO para alguien que nunca ha tejido.
 
 Proyecto: Tamaño ${size.label}, gancho ${hook}, anillo mágico base ${magic} puntos.
 
-REGLAS DE PRECISIÓN:
-- Lógica Matemática: Cada vuelta de aumento debe ser múltiplo de ${magic} (ej: ${magic}, ${magic*2}, ${magic*3}...).
-- Solo usa "punto bajo" (pb). No uses puntos complejos.
-- Evita abreviaturas pero mantén la precisión: "Haz 2 puntos en cada punto de la vuelta anterior".
-- Obligatorio: Cada vuelta debe incluir el campo "total" con la suma matemática exacta de puntos.
-- Estructura: Máximo 5 partes. Formas geométricas simples (esferas o cilindros).
+REGLAS IMPORTANTES para principiantes:
+- Usa palabras simples, NADA de abreviaturas técnicas
+- Escribe cada instrucción de forma muy clara: "Haz 2 puntos en el mismo hueco" en vez de "aum"
+- Incluye explicaciones de por qué se hace cada cosa
+- Máximo 3-4 colores, formas simples y redondeadas
+- Cada vuelta explicada como si fuera la primera vez
+- Incluye consejos de motivación y tips visuales
+- Las partes deben ser pocas y simples (máximo 5 partes)
 
-Responde SOLO con JSON:
-{
-  "nombre": "...",
-  "descripcion": "...",
-  "dificultad": "Principiante",
-  "materiales": ["..."],
-  "partes": [{
-    "nombre": "...",
-    "color": "...",
-    "vueltas": [
-      {
-        "num": 1,
-        "instruccion": "Haz ${magic} puntos bajos en un anillo mágico",
-        "pts": ${magic},
-        "explicacion": "Esta es la base circular."
-      },
-      {
-        "num": 2,
-        "instruccion": "Haz 2 puntos bajos en cada punto anterior",
-        "pts": ${magic*2},
-        "explicacion": "Estamos duplicando los puntos para que crezca."
-      }
-    ]
-  }]
-}`;
-}
+Responde SOLO con JSON (sin backticks):
+{"nombre":"...","descripcion":"...","dificultad":"Principiante","tiempoEstimado":"X-Y horas","nivelMensaje":"¡Tú puedes hacerlo! Este patrón es perfecto para comenzar.","materiales":["..."],"partes":[{"nombre":"...","color":"...","puntoInicial":"Haz un anillo mágico con ${magic} puntos","vueltas":[{"num":1,"instruccion":"Haz ${magic} puntos medios dentro del anillo mágico","total":${magic},"explicacion":"Esto forma la base de tu pieza"}],"notas":"..."}],"ensamblaje":["..."],"consejosFinales":["..."]}`;
+    }
 
     if (level === "intermediate") {
-  return `Actúa como una Ingeniera de Diseño en Crochet. Genera un patrón JSON de dificultad INTERMEDIA basado en la imagen.
+      return `Eres experta en amigurumis. Analiza la imagen y genera un patrón de amigurumi de dificultad INTERMEDIA.
 
 Proyecto: Tamaño ${size.label}, gancho ${hook}, anillo mágico base ${magic} puntos.
 
-REGLAS DE PRECISIÓN TÉCNICA:
-- Terminología Estándar: Usa pb (punto bajo), aum (aumento), dis (disminución), y mpa (medio punto alto).
-- Lógica de Crecimiento: Las vueltas deben seguir una progresión lógica (ej: ${magic}, ${magic*2}, ${magic*3}, o secuencias como [2 pb, 1 aum]).
-- Verificación Matemática: El campo "pts" debe ser la suma exacta de los puntos ejecutados en la vuelta.
-- Detalles Intermedios: Incluye cambios de color y piezas con formas específicas (no solo esferas).
-- Instrucciones: "Hacer 2 iguales" para brazos/piernas es obligatorio si aplica.
+REGLAS para nivel intermedio:
+- Usa abreviaturas básicas con su significado entre paréntesis la primera vez: pm (punto medio), aum (aumento), dis (disminución)
+- Instrucciones claras pero concisas
+- Puedes incluir algunas técnicas intermedias como cambio de color o relleno parcial
+- Hasta 6 partes, formas moderadamente detalladas
+- Incluye notas útiles y consejos prácticos
 
-Responde SOLO con JSON:
-{
-  "nombre": "...",
-  "descripcion": "...",
-  "dificultad": "Intermedio",
-  "materiales": ["..."],
-  "partes": [{
-    "nombre": "...",
-    "color": "...",
-    "vueltas": [
-      {
-        "num": 1,
-        "instruccion": "${magic} pb en anillo mágico",
-        "pts": ${magic},
-        "explicacion": "Base técnica."
-      },
-      {
-        "num": 2,
-        "instruccion": "(${magic} aum)",
-        "pts": ${magic*2},
-        "explicacion": "Aumentos en cada punto."
-      }
-    ],
-    "notas": "Rellenar a medida que se teje."
-  }]
-}`;
-}
+Responde SOLO con JSON (sin backticks):
+{"nombre":"...","descripcion":"...","dificultad":"Intermedio","tiempoEstimado":"X-Y horas","nivelMensaje":"¡Buen momento para subir de nivel con este patrón!","materiales":["..."],"partes":[{"nombre":"...","color":"...","puntoInicial":"Anillo mágico con ${magic} pm","vueltas":[{"num":1,"instruccion":"${magic} pm en anillo mágico","total":${magic},"explicacion":""}],"notas":"..."}],"ensamblaje":["..."],"consejosFinales":["..."]}`;
+    }
 
     // advanced
-    return `Actúa como Maestra Diseñadora de Amigurumis de Alta Costura. Genera un patrón JSON de nivel EXPERTO basado en la imagen.
+    return `Eres diseñadora experta en amigurumis con 10+ años de experiencia. Analiza la imagen y genera un patrón COMPLETO y DETALLADO nivel avanzado.
 
 Proyecto: Tamaño ${size.label}, gancho ${hook}, anillo mágico base ${magic} puntos.
 
-ESTÁNDARES DE ALTA COMPLEJIDAD:
-- Terminología Profesional: Usa pb, aum, dis, mpa, pa (punto alto), pc (punto cadena), BLO (solo hebra trasera), FLO (solo hebra delantera) y disminuciones invisibles.
-- Arquitectura Avanzada: El patrón debe incluir cambios de color estructurales, modelado de facciones y piezas asimétricas para realismo.
-- Lógica Matemática Estricta: Cada vuelta debe ser comprobada. El campo "pts" debe reflejar el resultado exacto de la operación técnica.
-- Instrucciones de Detalle: Incluye indicaciones de bordado, uso de alambre para articulaciones si aplica, y posicionamiento exacto de ojos y accesorios.
+Usa terminología técnica española: pm, aum, dis, ap, prs, v. Trabaja en espiral.
+Incluye TODAS las partes (cabeza, cuerpo, extremidades, orejas, cola, detalles).
+Vueltas completamente detalladas, cambios de color, técnicas avanzadas.
 
-Responde SOLO con JSON:
-{
-  "nombre": "...",
-  "descripcion": "...",
-  "dificultad": "Avanzado",
-  "materiales": ["..."],
-  "partes": [{
-    "nombre": "...",
-    "color": "...",
-    "vueltas": [
-      {
-        "num": 1,
-        "instruccion": "Anillo mágico de ${magic} pb",
-        "pts": ${magic},
-        "explicacion": "Inicio de pieza estructural."
-      },
-      {
-        "num": 2,
-        "instruccion": "(${magic} aum)",
-        "pts": ${magic*2},
-        "explicacion": "Crecimiento base."
-      }
-    ],
-    "notas": "Trabajar con tensión firme para evitar que se vea el relleno."
-  }]
-}`;
-}
+Responde SOLO con JSON (sin backticks):
+{"nombre":"...","descripcion":"...","dificultad":"Avanzado","tiempoEstimado":"X-Y horas","nivelMensaje":"Patrón técnico completo para tejedoras expertas.","materiales":["..."],"partes":[{"nombre":"...","color":"...","puntoInicial":"ap con ${magic} pm","vueltas":[{"num":1,"instruccion":"ap con ${magic} pm","total":${magic},"explicacion":""}],"notas":"..."}],"ensamblaje":["..."],"consejosFinales":["..."]}`;
+  };
+
   const generate = async () => {
     if (!imgB64 || !level) return;
     setLoading(true); setError(null); setPattern(null); setChecked({});
@@ -217,7 +147,7 @@ Responde SOLO con JSON:
           "anthropic-dangerous-direct-browser-access": "true"
         },
         body:JSON.stringify({
-          model: "claude-sonnet-4-20250514", max_tokens:8000,
+          model:"claude-sonnet-4-20250514", max_tokens:8000,
           messages:[{role:"user", content:[
             {type:"image", source:{type:"base64", media_type:"image/jpeg", data:imgB64}},
             {type:"text", text:buildPrompt()}
@@ -326,6 +256,40 @@ Responde SOLO con JSON:
               {[["📏",size.label],["🔗",`Gancho ${size.hook}`],["🎯",pattern.dificultad],["⏱",pattern.tiempoEstimado]].map(([i,v])=>(
                 <span key={v} style={{background:"rgba(255,255,255,0.2)", borderRadius:6, padding:"2px 9px", fontSize:10}}>{i} {v}</span>
               ))}
+            </div>
+          </div>
+
+          {/* tabla de contenidos */}
+          <div style={{border:`1px solid ${lv.border}`, borderRadius:12, marginBottom:16, overflow:"hidden"}}>
+            <div style={{background:lv.bg, padding:"10px 14px", borderBottom:`1px solid ${lv.border}`}}>
+              <div style={{fontSize:12, fontWeight:"bold", color:lv.color, textTransform:"uppercase", letterSpacing:1}}>📋 Tabla de contenidos</div>
+            </div>
+            <div style={{padding:"10px 14px"}}>
+              <div style={{display:"flex", justifyContent:"space-between", fontSize:11, color:"#6b5080", marginBottom:6, paddingBottom:4, borderBottom:`1px dashed ${lv.border}`}}>
+                <span>📖 {level==="advanced"?"Abreviaturas":"Glosario"}</span>
+              </div>
+              <div style={{display:"flex", justifyContent:"space-between", fontSize:11, color:"#6b5080", marginBottom:6, paddingBottom:4, borderBottom:`1px dashed ${lv.border}`}}>
+                <span>🪡 Materiales</span>
+              </div>
+              {pattern.partes.map((parte, pi) => (
+                <div key={pi} style={{display:"flex", justifyContent:"space-between", alignItems:"center", fontSize:11, color:"#3a1a5e", marginBottom:5, paddingBottom:5, borderBottom:`1px dashed ${lv.border}`}}>
+                  <span><strong style={{color:lv.color}}>◆ {parte.nombre}</strong> <span style={{color:"#9a8ab0"}}>({parte.color})</span></span>
+                  <span style={{color:lv.color, fontWeight:"bold", whiteSpace:"nowrap", marginLeft:8}}>{parte.vueltas.length} vueltas</span>
+                </div>
+              ))}
+              <div style={{display:"flex", justifyContent:"space-between", fontSize:11, color:"#6b5080", marginBottom:4, paddingBottom:4, borderBottom:`1px dashed ${lv.border}`}}>
+                <span>🔧 {level==="beginner"?"Cómo armar":"Ensamblaje"}</span>
+                <span style={{color:lv.color}}>{pattern.ensamblaje.length} pasos</span>
+              </div>
+              {pattern.consejosFinales?.length > 0 && (
+                <div style={{display:"flex", justifyContent:"space-between", fontSize:11, color:"#6b5080"}}>
+                  <span>💡 Consejos finales</span>
+                  <span style={{color:lv.color}}>{pattern.consejosFinales.length} consejos</span>
+                </div>
+              )}
+              <div style={{marginTop:10, padding:"8px 10px", background:lv.bg, borderRadius:8, fontSize:10, color:lv.color, fontWeight:"bold", textAlign:"center"}}>
+                Total: {pattern.partes.reduce((a,p)=>a+p.vueltas.length,0)} vueltas en {pattern.partes.length} partes · ⏱ {pattern.tiempoEstimado}
+              </div>
             </div>
           </div>
 
@@ -568,7 +532,7 @@ Responde SOLO con JSON:
                   </div>
                 )}
 
-                <div id="seccion-patron" style={{ backgroundColor: 'white', padding: '20px' }}></div>
+                {/* partes */}
                 {pattern.partes.map((parte, pi) => {
                   const done = parte.vueltas.filter(v=>checked[`${pi}-${v.num}`]).length;
                   return (
@@ -642,7 +606,7 @@ Responde SOLO con JSON:
                 <div style={{...S.card, background:"#1e1030", border:"1px solid #4a2080"}}>
                   <div style={{fontSize:13, fontWeight:"bold", color:"#e9d5ff", marginBottom:10}}>⬇️ Guardar patrón</div>
                   <div style={{display:"flex", flexDirection:"column", gap:8}}>
-                    <button onClick={descargarPDF} style={{padding:"13px 16px", borderRadius:10, border:"none", background:lv.headerBg, color:"#fff", fontWeight:"bold", fontSize:13, cursor:"pointer", textAlign:"left"}}>
+                    <button onClick={()=>setPrintView(true)} style={{padding:"13px 16px", borderRadius:10, border:"none", background:lv.headerBg, color:"#fff", fontWeight:"bold", fontSize:13, cursor:"pointer", textAlign:"left"}}>
                       📄 Ver patrón completo para imprimir
                       <div style={{fontSize:10, fontWeight:"normal", opacity:0.8, marginTop:2}}>Desde el navegador → Imprimir → Guardar como PDF</div>
                     </button>
@@ -673,23 +637,4 @@ const S = {
 const PS = {
   sec:   { marginBottom:16 },
   title: { fontSize:11, fontWeight:"bold", textTransform:"uppercase", letterSpacing:1, borderBottom:"2px solid #e9d5ff", paddingBottom:3, marginBottom:8 },
-};
-import html2pdf from 'html2pdf.js';
-
-// ... dentro de tu función principal de la App ...
-const descargarPDF = () => {
-  // Esta línea busca todo lo que esté dentro del contenedor que crearemos en el paso 2
-  const elemento = document.getElementById('seccion-patron'); 
-  
-  if (!elemento) return alert("No se encontró el contenido");
-
-  const opciones = {
-    margin: 10,
-    filename: 'Patron_AmigoPatronIA.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-
-  html2pdf().set(opciones).from(elemento).save();
 };
